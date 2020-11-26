@@ -1,0 +1,136 @@
+
+<html>
+   <head>
+    	<meta charset=UTF-8"/>
+    	<title>Relatório TP1 de PubEle</title>
+    	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.5.3/yeti/bootstrap.min.css">
+    	<style>
+			body{
+            	text-align:justify;
+            	margin-right:100px;
+            	margin-left:100px;
+        	}     
+        </style>
+    </head>
+
+    <body style="font-family:Times New Roman">
+    	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.5.3/yeti/bootstrap.min.css">
+        <style>
+            body{
+                text-align:justify;
+                margin-right:100px;
+                margin-left:100px;
+            }    
+        </style>
+
+    	<br>
+    	
+        <h1 align="center"><b>Relatório TP1 de PubEle</b></h1>
+        <hr align="center" width="70%">
+        <h3 align="center">Universidade do Minho</h3>
+        <br>
+        <center><img src="https://facs2017.di.uminho.pt/sites/default/files/logo_UMEENG_sem_nome.jpg" with=110 height=80></center>
+        <br>
+        <h3 align="center">Publicação Eletrónica</h3>
+        <br>
+        <h4 align="center">2020-11-26</h4>
+        <hr/>
+
+        <style>
+			div.a {
+  			text-indent: 25px;
+			}	
+      	</style>
+
+      	<style>
+    		.heading { color: #E24700; }
+  		</style>
+
+        <ul><h4><b>Autores</b></h4><ul>
+            
+            <li>Carla Rodrigues : 84710</li>
+            
+            <li>Cláudia Palma : 85401</li>
+            
+            <li>Eduarda Ribeiro : 85412</li>
+            
+        </ul></ul>
+        <hr/>
+        <br>
+
+        <ol><h2>Índice</h2><ol>
+        	
+	        <li><a class="heading" href="#Resumo">Resumo</a></li>
+	        
+	        <li><a class="heading" href="#Introdução">Introdução</a></li>
+	        
+	        <li><a class="heading" href="#Ficheiro XML: Portfolio.xml">Ficheiro XML: Portfolio.xml</a></li>
+	        
+	        <li><a class="heading" href="#Template HTML dos Relatórios">Template HTML dos Relatórios</a></li>
+	        
+	        <li><a class="heading" href="#Template HTML do Índice">Template HTML do Índice</a></li>
+	        
+	        <li><a class="heading" href="#Programa em python">Programa em python</a></li>
+	        
+	        <li><a class="heading" href="#Conclusão">Conclusão</a></li>
+	        
+	    </ol></ol>
+
+		<ol>
+	       	
+	        <h2 id="Resumo"> Resumo</h2>
+		    <div class="a"><p><p>No âmbito da unidade curricular de Publicação Eletrónica, desenvolveu-se o seguinte trabalho que tem como objetivo o aproveitamento das potencialidades das linguagens XML, HTML e Python para o estudo da publicação eletrónica de relatórios.</p><p>A construção deste trabalho assenta nas seguintes fases:</p><p>1.   Em primeiro lugar criamos um ficheiro XML, denominado Portfolio.xml que contém vários Relatórios.</p><p>2.   Criamos dois templates HTML (um para o Relatório, denomiando report_template, e outro para o Portfolio, denominado index_template) que, foram adicionados ao ficheiro portfolio_to_html.py.</p><p>3. Também no ficheiro portfolio_to_html.py, criamos um conjunto de funções em Python que permitem preencher os dois templates HTML criados (report_template e index_template) com informação do ficheiro Portfolio.xml. Foi também necessária a criação do ficheiro report.dtd que é chamado numa das funções python do ficheiro portfolio_to_html.py.</p><p>4.    Para testar, corremos o ficheiro portfolio_to_html.py no terminal da seguinte forma: python3 portfolio_to_html.py.</p><p>5.    Neste caso, foram gerados 4 ficheiros HTML (report1.html, report2.html, report3.html, report4.html) correspondentes aos 4 relatórios que se encontravam no nosso ficheiro Portfolio.xml.</p><p>6.    Para além dos 4 ficheiros mencionados no ponto anterior, é gerado um outro ficheiro HTML denominado index.html, correspondente ao index_template (template do Portfolio). Nesse ficheiro, index.html, encontra-se: a identificação do grupo de trabalho; a identificação dos docentes; um índice dos vários Relatórios criados dentro do ficheiro Portfolio.xml: três deles a título de exemplo, com base em relatórios de outra cadeira do nosso curso e outro correspondente a um breve relatório do trabalho em questão, onde é explicado com maior detalhe a elaboração de cada um dos ficheiros aqui mencionados, nomeadamente as funções Python criadas; um índice temático de hashtags; todos os ficheiros criados neste trabalho, nomeadamente o código python criado.</p>
+</p></div>
+	       	
+	        <h2 id="Introdução"> Introdução</h2>
+		    <div class="a"><p><p>O HTML é uma linguagem de marcação utilizada para a criação de páginas web e outras informações que podem ser exibidas num navegador web. Esta linguagem é escrita na forma de elementos HTML que consistem em marcas que, geralmente vêm aos pares. Estas marcas são designadas por tags, sendo que a primeira tag simboliza o início e a segunda simboliza o fim. Entre as tags pode ser adicionado texto, outras tags, etc. Um navegador web não exibe as tags HTML, apenas as usa para interpretar o conteúdo da página [1].</p><p>O XML, ou Extensible Markup Language, é uma linguagem de marcação utilizada na criação de documentos com dados organizados hierarquicamente. A grande vantagem associada a esta linguagem é o facto de estes dados se encontrarem organizados de uma forma bem estruturada e lógica, o que possibilita um tratamento mais fácil da informação. O XML também vai permitir o surgimento de uma nova geração de aplicações de manipulação e visualização de dados via internet. O XML permite a definição de um número infinito de tags. Enquanto que no HTML, as tags podem ser usadas para definir a formatação de caracteres e parágrafos, o XML provê um sistema para criar tags para dados estruturados [1].</p>
+</p></div>
+	       	
+	        <h2 id="Ficheiro XML: Portfolio.xml"> Ficheiro XML: Portfolio.xml</h2>
+		    <div class="a"><p><p>Como já foi referido anteriormente, a etapa inicial deste trabalho consistiu na análise de alguns relatórios já existentes e no levantamentos dos seus componentes. Com base nisso, criamos o ficheiro Portfolio.xml, este contém a raíz portfolio que contém os vários reports.</p><p>Assim, o principal objetivo desta etapa consistiu em construir um esquema XML que pudesse suportar qualquer exemplar de relatório.</p><p>O elemento principal, designado por portfolio contém o report, sendo este constituído por sete partes: theme, date, affiliation, subject, team, body, image e bibliography. Por sua vez, o team é constituído por element, o qual contém o name e number. Ou seja, representa o nome e número de cada elemento do grupo de trabalho. Relativamente ao elemento body do report foi especificado o elemento section, o qual contém os seguintes elementos: title, text e hashtag. Permite assim, representar os vários títulos que cada relatório pode ter, o texto e ainda uma hashtag para a elaboração de um índice temático no ficheiro index.html. O elemento image do report, permite a colocação de uma imagem, por exemplo, através do seu link da web. Por fim, relativamente ao elemento bibliography do report, foi especificado o elemento bibitem, o qual contém os elementos author e description. Permitindo assim, representar o autor e nome da referência, onde poderá estar o link web se se tratar de uma referência web.</p>
+</p></div>
+	       	
+	        <h2 id="Template HTML dos Relatórios"> Template HTML dos Relatórios</h2>
+		    <div class="a"><p><p>O template apresentado na função report_template permite converter o ficheiro XML num ficheiro HTML de acordo com uma certa estrutura definida. Assim, inicialmente são definidas as margens da página HTML tanto no head, onde se encontra o theme, como no body, que engloba vários elementos dos relatórios, como por exemplo, theme, affiliation, subject, date, os autores, o índice e as referências bibliográficas.</p><p>Posteriormente, dentro do body, alinham-se e centram-se o theme, affiliation, subject, date e ainda, adiciona-se uma imagem comum a todos os reports. Para além disso, definem-se indentações de parágrafos e cores para texto. Visto que os relatórios podem ter uma quantidade de autores diferentes, por exemplo, foi necessário automatizar o processo de preenchimento do template através de um ciclo for que vai percorrer todos os element de team convertendo os parâmetros name e number.</p><p> O índice utiliza também, um ciclo for que permite ir buscar os títulos que constituem o relatório e fazer o redirecionamento desse índice para a localização de cada título no relatório. A cor definida anteriormente atua sobre os elementos do índice.</p><p>De seguida, recorre-se a outro ciclo for que vai permitir estruturar os vários títulos e os respetivos textos pertencentes a uma section do body no XML, como por exemplo, introdução, desenvolvimento e conclusão. Ainda dentro do body do HTML encontra-se código que permite a inserção de uma imagem se esta existir. Por fim, seguem-se as referências bibliográficas que utilizam um ciclo for, de modo a conseguir estruturar os vários autores e descrições que a bibliografia de um relatório pode conter.</p>
+</p></div>
+	       	
+	        <h2 id="Template HTML do Índice"> Template HTML do Índice</h2>
+		    <div class="a"><p><p>No template do índice, começou-se por definir a estrutura do título dentro do head, e, de seguida, já dentro do body, tal como aconteceu no template dos relatórios, foram definidas as margens e cores que vão atuar na estética da página. Alinha-se ao centro e escolhe-se o tamanho dos títulos Portfolio e Universidade do Minho, e insere-se uma imagem, que neste caso é o logo da Escola de Engenharia da Universidade do Minho.</p><p>Foram definidos outros aspetos da estrutura como por exemplo, o número do grupo de trabalho e a cor de um determinado texto utilizada posteriormente. De seguida, estruturam-se as informações relativas aos autores do projeto: Nome, E-mail e Número de aluno, e ainda, a identificação dos docentes.</p><p>Posteriormente, define-se um índice dos vários relatórios em que, através de um ciclo for é possível aceder aos vários themes dos reports que se pretende converter e, utilizando o redirecionamento é possível aceder individualmente a cada um dos relatórios carregando sobre o seu nome. O índice temático, utiliza as hashtags contidas em cada um dos relatórios e segue o mesmo esquema do índice. Assim, permite aceder a um relatório a partir de um tema que seja que abordado nele.</p><p>Finalmente, encontra-se o redirecionamento para os vários ficheiros elaborados neste trabalho nomeadamente, Portfolio.xml, portfolio_to_html.py e report.dtd.</p>
+</p></div>
+	       	
+	        <h2 id="Programa em python"> Programa em python</h2>
+		    <div class="a"><p><p>Foi desenvolvido um programa em python (portfolio_to_html.py), que permite converter vários relatórios de um portolio em XML para HTML. Cada relatório gera uma página html separada. Para além disso, também é gerada outra página HTML, que funciona como índice geral e permite aceder à página de cada relatório.</p>
+<p>Para definir a estrutura do ficheiro XML e para auxiliar na posterior conversão para HTML foi criado o report.dtd, que contém as tags legais do ficheiro XML (ou seja, não inclui as tags p de parágrafo e b de negrito, por exemplo).</p>
+<p> O programa em python inclui várias funcões, cruciais para o seu correto funcionamento, tais como dtd() , extract_report(), extract_list(xml,tag), extract_dict(l, report),  extract_theme, extract_hashtags que são utilizadas para extrair conteúdo do XML: </p>
+<p>- dtd() cria uma lista com as tags do XML;</p>
+<p>- extract_report() cria uma lista, em que cada elemento da lista é um report do XML;</p>
+<p>- extract_list(xml,tag) recebe uma tag "pai" do xml, e cria uma lista com o conteúdo da tag "filha";</p>
+<p>- extract_dict(l, report) recebe uma lista de tags e o report (ou excerto do report), e devolve um dicionário {tag:conteúdo correspondente};</p>
+<p>- extract_theme e extract_hashtags, são utilizadas para extrair o conteúdo das tags theme e hashtags, e assim serem usadas no preenchimento do template do índice geral.</p>
+<p>As funções report_template(info) e index_template(info) definem os templates dos HTML e preenchem-no com os elementos do XML extraídos.</p>
+<p>Desta forma, remetendo para a main() e para a geração dos report.html, é essencial criar um dicionário para cada relatório. Esse dicionário contém as tags (que são as chaves) e o conteúdo correspondente (valor). Quando o conteúdo apresenta tags aninhadas, estas vão ser extraídas e é criada uma lista com dicionários dessas tags. Posteriormente, o dicionário de cada relatório será usado para preencher o report_template.</p>
+<p> Do mesmo modo, para gerar o index.html, é também necessário criar um dicionário com as tags theme e hashtag de todos os relatórios, e este dicionário será usado para preencher o index_template.</p>
+</p></div>
+	       	
+	        <h2 id="Conclusão"> Conclusão</h2>
+		    <div class="a"><p><p> Este projeto, no âmbito da unidade curricular de Publicação Eletrónica, permitiu-nos aprofundar e pôr em prática os conhecimentos adquiridos relativamente a XML e a HTML. De modo a concretizar os objetivos do trabalho foi necessário implementar funções em python que permitissem a obtenção de dados do ficheiro XML e a sua correta conversão para HTML. No entanto, ainda seria possível melhorar alguns aspetos do trabalho, como, por exemplo, a inserção de subtítulos e a possibilidade de procurar por hashtags contidas no texto do relatório sem que seja necessário uma tag específica onde estas estão contidas. Estas melhorias permitiriam não só, uma melhor estruturação e organização dos relatórios em HTML, como também uma melhor eficiência.</p>
+</p></div>
+	       	
+	    </ol>
+
+	    <br>
+
+	    
+
+	    <br>
+	    <br>
+
+		<ol><h2>Referências Bibliográficas</h2><ol>
+		   	<p>
+			<li> XML - Extensible Markup Language . Acedido a 25 de Novembro de 2020. Disponível em:https://www.gta.ufrj.br/grad/00_1/miguel/link1.html 
+		    </li></p>
+		    
+		</ol></ol>
+		
+    </body>
+</html>

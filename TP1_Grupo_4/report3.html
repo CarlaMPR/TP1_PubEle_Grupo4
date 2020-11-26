@@ -1,0 +1,117 @@
+
+<html>
+   <head>
+    	<meta charset=UTF-8"/>
+    	<title>TP2 – Internet paths and delays</title>
+    	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.5.3/yeti/bootstrap.min.css">
+    	<style>
+			body{
+            	text-align:justify;
+            	margin-right:100px;
+            	margin-left:100px;
+        	}     
+        </style>
+    </head>
+
+    <body style="font-family:Times New Roman">
+    	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.5.3/yeti/bootstrap.min.css">
+        <style>
+            body{
+                text-align:justify;
+                margin-right:100px;
+                margin-left:100px;
+            }    
+        </style>
+
+    	<br>
+    	
+        <h1 align="center"><b>TP2 – Internet paths and delays</b></h1>
+        <hr align="center" width="70%">
+        <h3 align="center">Universidade do Minho</h3>
+        <br>
+        <center><img src="https://facs2017.di.uminho.pt/sites/default/files/logo_UMEENG_sem_nome.jpg" with=110 height=80></center>
+        <br>
+        <h3 align="center">Comunicações e Redes</h3>
+        <br>
+        <h4 align="center">2020-11-03</h4>
+        <hr/>
+
+        <style>
+			div.a {
+  			text-indent: 25px;
+			}	
+      	</style>
+
+      	<style>
+    		.heading { color: #E24700; }
+  		</style>
+
+        <ul><h4><b>Autores</b></h4><ul>
+            
+            <li>Carla Rodrigues : 84710</li>
+            
+            <li>Cláudia Palma : 85401</li>
+            
+            <li>Eduarda Ribeiro : 85412</li>
+            
+        </ul></ul>
+        <hr/>
+        <br>
+
+        <ol><h2>Índice</h2><ol>
+        	
+	        <li><a class="heading" href="#Introdução">Introdução</a></li>
+	        
+	        <li><a class="heading" href="#GTT – IP Network Diagnosis: IP 193.136.9.240">GTT – IP Network Diagnosis: IP 193.136.9.240</a></li>
+	        
+	        <li><a class="heading" href="#GTT – IP Network Diagnosis: IP 143.54.2.20">GTT – IP Network Diagnosis: IP 143.54.2.20</a></li>
+	        
+	        <li><a class="heading" href="#Conclusão">Conclusão</a></li>
+	        
+	    </ol></ol>
+
+		<ol>
+	       	
+	        <h2 id="Introdução"> Introdução</h2>
+		    <div class="a"><p><p>Este trabalho tem como finalidade recorrer a servidores externos de modo a ser possível encontrar os routers associados aos seguintes IPs: 193.136.9.240 e 143.54.2.20. Como resultado, vão ser apresentadas quatro alternativas para cada endereço IP.
+                Um traceroute é uma ferramenta que permite compreender como a informação é transmitida de um computador para outro através de uma rede. Este programa pode ser executado em qualquer hospedeiro da Internet e determina o “caminho” realizado entre dois sistemas, especificando os routers pelos quais a ligação passa até alcançar o destinatário.</p><p>Assim, é necessário indicar o destino para que o router de origem envie uma série de pacotes de Protocolo de Mensagens de Controlo de Internet (ICMP). Quando o router final receber o último dos pacotes enviados pela origem, este envia uma mensagem à origem e é registado o round-trip time (RTT), isto é, o tempo total que decorreu desde o envio do pacote até à receção da mensagem de retorno correspondente. De salientar que o traceroute repete este processo três vezes, de modo que a origem envia, na verdade, 3N pacotes ao destino, considerando que existem N-1 routers entre a origem e o destino. Ficam também registados o nome e o endereço IP de cada router.</p><p>Cada pacote de informação possui um valor de time-to-live (TTL). Este valor é incluído para garantir que os pacotes não fiquem a circular infinitamente na rede e é decrementado em uma unidade cada vez que o pacote é processado por um router. Assim, se o valor de TTL atingir o zero e o destino ainda não estiver alcançado, o pacote é descartado, notificando o utilizador que o destino não foi atingido [1].
+                O método de funcionamento de um traceroute é baseado no aumento do valor de TTL para cada pacote enviado sucessivamente. O primeiro pacote é enviado com um valor de TTL igual a 1, o que implica apenas um salto. O pacote seguinte será, então, enviado com um valor de TTL igual a 2 e assim sucessivamente. Desta forma, é possível traçar o percurso de um pacote com vista a um determinado destino.</p><p>O RTT pode ser influenciado por múltiplos fatores, tais como: a natureza do meio de transmissão, o tráfego da rede local (LAN), o tempo de resposta do servidor, a contagem de nó, o congestionamento e a distância física.</p>
+<hashtag>#Round Trip Time (RTT)</hashtag>
+</p></div>
+	       	
+	        <h2 id="GTT – IP Network Diagnosis: IP 193.136.9.240"> GTT – IP Network Diagnosis: IP 193.136.9.240</h2>
+		    <div class="a"><p><p>Existem 11 routers entre a origem e o destino (IP 193.136.9.240 e host marco.uminho.pt). Foram detetados alguns saltos relevantes dos 12 apresentados na tabela 3, sendo estes explicados detalhadamente de seguida. Entre os saltos 1 e 4, verificam-se valores de RTT bastante próximos (aproximadamente constantes), o que era de esperar uma vez que a transmissão de pacotes é feita dentro do mesmo continente, ainda que entre dois países diferentes, de 3 para 4, pois estes estão relativamente próximos.</p><p>Do salto 4 para o 5, o valor de RTT apresentou uma subida considerável (subida de 52.949 ms). Esta subida deve-se, provavelmente, à mudança de continente: o router 4 está em França e o router 5 nos Estados Unidos. O aumento da distância geográfica, foi o fator que consideramos ter tido um maior peso no aumento do RTT. Contudo, um elevado aumento no valor de RTT (aumento da latência) pode indicar um problema. Pode ser um link de rede saturado (super utilizado), um link de rede lento, um router sobrecarregado, ou, qualquer outro problema naquele salto.</p><p>Do salto 5 para o 6, verifica-se uma diminuição do valor de RTT para mais de metade, apesar de ter havido, novamente, uma mudança de continente: o router 5 está no Estados Unidos e o router 6 está em França. Isto pode levar a concluir que do salto 4 para o 5, o aumento de RTT possa ser justificado não só pela questão da distância, mas também, por um congestionamento da rede. No salto 8, observa-se que apenas tem o endereço de IP do router, mas falta o nome do mesmo. Isto significa, que a pesquisa de DNS (Domain Name Server) inversa (encontrar o nome do host com base no endereço IP) falhou nesse endereço e assim, não foi possível determinar o nome do router.</p><p>Entre os saltos 9 e 11, observam-se apenas timeouts. Existem duas possibilidades para isto acontecer. Primeiro, o ICMP/ UDP pode não estar configurado. Portanto, se o traceroute for concluído com êxito e ainda assim existirem timeouts, é provável que esses routers não estejam configurados para responder ao tráfego ICMP/ UDP (Internet Control Message Protocol/ User Datagram Protocol). Este resultado não significa que o pacote não passou, mas que pode não ter sido enviado mensagem de retorno pelo router. A segunda possibilidade é ter ocorrido a perda dos pacotes, isto é, terem sido descartados devido a um problema na rede. Geralmente deve-se aos tempos limite de pacote, ou seja, o tempo de envio do pacote ter sido superior ao tempo de envio limite (TTL), ou então, porque o tráfego foi bloqueado por um firewall.</p><p>Por fim, a ferramenta atingiu o máximo de saltos predefinidos antes de atingir o destinatário esperado, IP 193.136.9.240 e host marco.uminho.pt.</p>
+</p></div>
+	       	
+	        <h2 id="GTT – IP Network Diagnosis: IP 143.54.2.20"> GTT – IP Network Diagnosis: IP 143.54.2.20</h2>
+		    <div class="a"><p><p>Entre os saltos 1 e 3, verificam-se valores de RTT bastante próximos (aproximadamente constantes), o que era de esperar uma vez que a transmissão de pacotes é feita dentro do mesmo continente, ainda que entre dois países diferente, de 1 para 2 (da Alemanha para o Reino Unido), onde se observa um ligeiro aumento do valor de RTT devido à distância geográfica entre eles. Do salto 3 para o 4, verifica-se um ligeiro aumento do valor de RTT. Era de esperar que este aumento fosse substancialmente mais elevado uma vez que a transmissão dos pacotes sofre uma mudança de continente, entrando aqui o fator da distância. Este baixo valor de latência indica uma boa conexão.</p><p>No salto 5, observam-se apenas timeouts, cuja razão será a mesma que foi apresentada anteriormente para o caso do IP 193.136.9.240. Entre os saltos 6 e 9, verificam-se valores de RTT bastante próximos (aproximadamente constantes), o que era de esperar uma vez que a transmissão de pacotes é feita dentro do mesmo país.</p><p>Do salto 9 para o 10, o valor de RTT apresentou uma subida considerável (subida de 97.250 ms). Esta subida deve-se, provavelmente, à mudança de continente: o router 9 está em nos Estados Unidos (América do Norte) e o router 10 no Brasil (América do Sul). O aumento da distância geográfica, foi o fator que consideramos ter tido um maior peso no aumento do RTT. Contudo, um elevado aumento no valor de RTT (aumento da latência) pode indicar um problema. Pode ser um link de rede saturado (super utilizado), um link de rede lento, um router sobrecarregado, ou, qualquer outro problema naquele salto.</p><p>Nos saltos 10, 11 e 12 observa-se que apenas têm o endereço de IP do router, mas falta o nome do mesmo. Isto significa, que a pesquisa de DNS inversa (encontrar o nome do host com base no endereço IP) falhou nesses endereços e assim, não foi possível determinar os nomes dos routers. Além disso, verificam-se valores de RTT bastante próximos (aproximadamente constantes), o que era de esperar uma vez que a transmissão de pacotes é feita dentro da mesma cidade.</p><p>Também aqui, a ferramenta atingiu o máximo de saltos predefinidos antes de atingir o destinatário esperado, IP 143.54.2.20 e host www.ufrgs.br.</p>
+</p></div>
+	       	
+	        <h2 id="Conclusão"> Conclusão</h2>
+		    <div class="a"><p><p>Ao longo deste trabalho foram utilizados vários servidores externos para obter as rotas para os IPs 193.136.9.240 e 143.54.2.20. Contatou-se que, para o mesmo IP, servidores externos diferentes obtiveram um número total de saltos e um tempo total de resposta distintos.
+                Verificou-se também, que o RTT aumenta à medida que se aproxima do IP e que, depende da distância que o router tem de percorrer e do tempo que tem de permanecer em fila de espera.</p><p>Através do servidor Looking-glass.connect, não se obteve resposta para nenhum dos IPs. Isto aconteceu por uma de duas razões: ou o router está num caminho configurado para não dar resposta, ou o utilizador está a utilizar um endereço de intranet para fazer acesso ao exterior e o exterior não conhece a rota para aceder. Por exemplo, como podemos observar na figura 3, a ligação a marco.uminho.pt acontece até ao router da Universidade do Minho, mas o utilizador não consegue aceder ao router interno uma vez que não tem permissão para isso.Através da comparação dos resultados representados pelas figuras 3 e 6, conclui-se que não são equivalentes e consistentes [2].</p>
+</p></div>
+	       	
+	    </ol>
+
+	    <br>
+
+	    
+	    <center><img src=https://www.cloudflare.com/img/learning/cdn/glossary/ttl/icmp-traceroute-diagram.png with=550 height=500></center>
+	    
+
+	    <br>
+	    <br>
+
+		<ol><h2>Referências Bibliográficas</h2><ol>
+		   	<p>
+			<li> J. F. Kurose, K. W. Ross . Redes de computadores e a Internet: uma abordagem top-down, 6. ed. São Paulo: Pearson Education do Brasil, 2013. 
+		    </li></p>
+		    
+			<li> A. Jasim, F. Sabah, M. R. Mohammed . “Satellite communication channel”, Degree Thesis, Linnaeus University, School of Computer Science, Physics and Mathematics, 2012. 
+		    </li></p>
+		    
+		</ol></ol>
+		
+    </body>
+</html>

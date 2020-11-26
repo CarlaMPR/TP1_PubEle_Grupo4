@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<portfolio>
+
+	<report>
+        <theme>Relatório TP1 de PubEle</theme>
+        <date>2020-11-26</date>
+        <affiliation>Universidade do Minho</affiliation>
+        <subject>Publicação Eletrónica</subject>
+
+        <team>
+            <element>
+                <name>Carla Rodrigues</name>
+                <number>84710</number>
+            </element>
+            <element>
+                <name>Cláudia Palma</name>
+                <number>85401</number>
+            </element>
+            <element>
+                <name>Eduarda Ribeiro</name>
+                <number>85412</number>
+            </element>
+        </team>
+
+      
+        <body>
+
+            <section>
+                <title>Resumo</title>
+                <text><p>No âmbito da unidade curricular de Publicação Eletrónica, desenvolveu-se o seguinte trabalho que tem como objetivo o aproveitamento das potencialidades das linguagens XML, HTML e Python para o estudo da publicação eletrónica de relatórios.</p><p>A construção deste trabalho assenta nas seguintes fases:</p><p>1.   Em primeiro lugar criamos um ficheiro XML, denominado Portfolio.xml que contém vários Relatórios.</p><p>2.   Criamos dois templates HTML (um para o Relatório, denomiando report_template, e outro para o Portfolio, denominado index_template) que, foram adicionados ao ficheiro portfolio_to_html.py.</p><p>3. Também no ficheiro portfolio_to_html.py, criamos um conjunto de funções em Python que permitem preencher os dois templates HTML criados (report_template e index_template) com informação do ficheiro Portfolio.xml. Foi também necessária a criação do ficheiro report.dtd que é chamado numa das funções python do ficheiro portfolio_to_html.py.</p><p>4.    Para testar, corremos o ficheiro portfolio_to_html.py no terminal da seguinte forma: python3 portfolio_to_html.py.</p><p>5.    Neste caso, foram gerados 4 ficheiros HTML (report1.html, report2.html, report3.html, report4.html) correspondentes aos 4 relatórios que se encontravam no nosso ficheiro Portfolio.xml.</p><p>6.    Para além dos 4 ficheiros mencionados no ponto anterior, é gerado um outro ficheiro HTML denominado index.html, correspondente ao index_template (template do Portfolio). Nesse ficheiro, index.html, encontra-se: a identificação do grupo de trabalho; a identificação dos docentes; um índice dos vários Relatórios criados dentro do ficheiro Portfolio.xml: três deles a título de exemplo, com base em relatórios de outra cadeira do nosso curso e outro correspondente a um breve relatório do trabalho em questão, onde é explicado com maior detalhe a elaboração de cada um dos ficheiros aqui mencionados, nomeadamente as funções Python criadas; um índice temático de hashtags; todos os ficheiros criados neste trabalho, nomeadamente o código python criado.</p>
+                </text>
+            </section>
+
+            <section>
+                <title>Introdução</title>
+                <text><p>O HTML é uma linguagem de marcação utilizada para a criação de páginas web e outras informações que podem ser exibidas num navegador web. Esta linguagem é escrita na forma de elementos HTML que consistem em marcas que, geralmente vêm aos pares. Estas marcas são designadas por tags, sendo que a primeira tag simboliza o início e a segunda simboliza o fim. Entre as tags pode ser adicionado texto, outras tags, etc. Um navegador web não exibe as tags HTML, apenas as usa para interpretar o conteúdo da página [1].</p><p>O XML, ou Extensible Markup Language, é uma linguagem de marcação utilizada na criação de documentos com dados organizados hierarquicamente. A grande vantagem associada a esta linguagem é o facto de estes dados se encontrarem organizados de uma forma bem estruturada e lógica, o que possibilita um tratamento mais fácil da informação. O XML também vai permitir o surgimento de uma nova geração de aplicações de manipulação e visualização de dados via internet. O XML permite a definição de um número infinito de tags. Enquanto que no HTML, as tags podem ser usadas para definir a formatação de caracteres e parágrafos, o XML provê um sistema para criar tags para dados estruturados [1].</p>
+                </text>
+                <hashtag>#XML e HTML</hashtag>
+            </section>
+
+            <section>
+                <title>Ficheiro XML: Portfolio.xml</title>
+                <text><p>Como já foi referido anteriormente, a etapa inicial deste trabalho consistiu na análise de alguns relatórios já existentes e no levantamentos dos seus componentes. Com base nisso, criamos o ficheiro Portfolio.xml, este contém a raíz portfolio que contém os vários reports.</p><p>Assim, o principal objetivo desta etapa consistiu em construir um esquema XML que pudesse suportar qualquer exemplar de relatório.</p><p>O elemento principal, designado por portfolio contém o report, sendo este constituído por sete partes: theme, date, affiliation, subject, team, body, image e bibliography. Por sua vez, o team é constituído por element, o qual contém o name e number. Ou seja, representa o nome e número de cada elemento do grupo de trabalho. Relativamente ao elemento body do report foi especificado o elemento section, o qual contém os seguintes elementos: title, text e hashtag. Permite assim, representar os vários títulos que cada relatório pode ter, o texto e ainda uma hashtag para a elaboração de um índice temático no ficheiro index.html. O elemento image do report, permite a colocação de uma imagem, por exemplo, através do seu link da web. Por fim, relativamente ao elemento bibliography do report, foi especificado o elemento bibitem, o qual contém os elementos author e description. Permitindo assim, representar o autor e nome da referência, onde poderá estar o link web se se tratar de uma referência web.</p>
+                </text>
+            </section>
+
+            <section>
+                <title>Template HTML dos Relatórios</title>
+                <text><p>O template apresentado na função report_template permite converter o ficheiro XML num ficheiro HTML de acordo com uma certa estrutura definida. Assim, inicialmente são definidas as margens da página HTML tanto no head, onde se encontra o theme, como no body, que engloba vários elementos dos relatórios, como por exemplo, theme, affiliation, subject, date, os autores, o índice e as referências bibliográficas.</p><p>Posteriormente, dentro do body, alinham-se e centram-se o theme, affiliation, subject, date e ainda, adiciona-se uma imagem comum a todos os reports. Para além disso, definem-se indentações de parágrafos e cores para texto. Visto que os relatórios podem ter uma quantidade de autores diferentes, por exemplo, foi necessário automatizar o processo de preenchimento do template através de um ciclo for que vai percorrer todos os element de team convertendo os parâmetros name e number.</p><p> O índice utiliza também, um ciclo for que permite ir buscar os títulos que constituem o relatório e fazer o redirecionamento desse índice para a localização de cada título no relatório. A cor definida anteriormente atua sobre os elementos do índice.</p><p>De seguida, recorre-se a outro ciclo for que vai permitir estruturar os vários títulos e os respetivos textos pertencentes a uma section do body no XML, como por exemplo, introdução, desenvolvimento e conclusão. Ainda dentro do body do HTML encontra-se código que permite a inserção de uma imagem se esta existir. Por fim, seguem-se as referências bibliográficas que utilizam um ciclo for, de modo a conseguir estruturar os vários autores e descrições que a bibliografia de um relatório pode conter.</p> 
+                </text>
+            </section>
+            
+            <section>
+                <title>Template HTML do Índice</title>
+                <text><p>No template do índice, começou-se por definir a estrutura do título dentro do head, e, de seguida, já dentro do body, tal como aconteceu no template dos relatórios, foram definidas as margens e cores que vão atuar na estética da página. Alinha-se ao centro e escolhe-se o tamanho dos títulos Portfolio e Universidade do Minho, e insere-se uma imagem, que neste caso é o logo da Escola de Engenharia da Universidade do Minho.</p><p>Foram definidos outros aspetos da estrutura como por exemplo, o número do grupo de trabalho e a cor de um determinado texto utilizada posteriormente. De seguida, estruturam-se as informações relativas aos autores do projeto: Nome, E-mail e Número de aluno, e ainda, a identificação dos docentes.</p><p>Posteriormente, define-se um índice dos vários relatórios em que, através de um ciclo for é possível aceder aos vários themes dos reports que se pretende converter e, utilizando o redirecionamento é possível aceder individualmente a cada um dos relatórios carregando sobre o seu nome. O índice temático, utiliza as hashtags contidas em cada um dos relatórios e segue o mesmo esquema do índice. Assim, permite aceder a um relatório a partir de um tema que seja que abordado nele.</p><p>Finalmente, encontra-se o redirecionamento para os vários ficheiros elaborados neste trabalho nomeadamente, Portfolio.xml, portfolio_to_html.py e report.dtd.</p>
+                </text>
+            </section>
+         
+            <section>
+                <title>Programa em python</title>
+                <text><p>Foi desenvolvido um programa em python (portfolio_to_html.py), que permite converter vários relatórios de um portolio em XML para HTML. Cada relatório gera uma página html separada. Para além disso, também é gerada outra página HTML, que funciona como índice geral e permite aceder à página de cada relatório.</p>
+                <p>Para definir a estrutura do ficheiro XML e para auxiliar na posterior conversão para HTML foi criado o report.dtd, que contém as tags legais do ficheiro XML (ou seja, não inclui as tags p de parágrafo e b de negrito, por exemplo).</p>
+                <p> O programa em python inclui várias funcões, cruciais para o seu correto funcionamento, tais como dtd() , extract_report(), extract_list(xml,tag), extract_dict(l, report),  extract_theme, extract_hashtags que são utilizadas para extrair conteúdo do XML: </p> 
+                <p>- dtd() cria uma lista com as tags do XML;</p>
+                <p>- extract_report() cria uma lista, em que cada elemento da lista é um report do XML;</p>
+                <p>- extract_list(xml,tag) recebe uma tag "pai" do xml, e cria uma lista com o conteúdo da tag "filha";</p>
+                <p>- extract_dict(l, report) recebe uma lista de tags e o report (ou excerto do report), e devolve um dicionário {tag:conteúdo correspondente};</p>
+                <p>- extract_theme e extract_hashtags, são utilizadas para extrair o conteúdo das tags theme e hashtags, e assim serem usadas no preenchimento do template do índice geral.</p>
+                <p>As funções report_template(info) e index_template(info) definem os templates dos HTML e preenchem-no com os elementos do XML extraídos.</p>
+                <p>Desta forma, remetendo para a main() e para a geração dos report.html, é essencial criar um dicionário para cada relatório. Esse dicionário contém as tags (que são as chaves) e o conteúdo correspondente (valor). Quando o conteúdo apresenta tags aninhadas, estas vão ser extraídas e é criada uma lista com dicionários dessas tags. Posteriormente, o dicionário de cada relatório será usado para preencher o report_template.</p>
+                <p> Do mesmo modo, para gerar o index.html, é também necessário criar um dicionário com as tags theme e hashtag de todos os relatórios, e este dicionário será usado para preencher o index_template.</p>
+                </text>
+            </section>
+
+            <section>
+                <title>Conclusão</title>
+                <text><p> Este projeto, no âmbito da unidade curricular de Publicação Eletrónica, permitiu-nos aprofundar e pôr em prática os conhecimentos adquiridos relativamente a XML e a HTML. De modo a concretizar os objetivos do trabalho foi necessário implementar funções em python que permitissem a obtenção de dados do ficheiro XML e a sua correta conversão para HTML. No entanto, ainda seria possível melhorar alguns aspetos do trabalho, como, por exemplo, a inserção de subtítulos e a possibilidade de procurar por hashtags contidas no texto do relatório sem que seja necessário uma tag específica onde estas estão contidas. Estas melhorias permitiriam não só, uma melhor estruturação e organização dos relatórios em HTML, como também uma melhor eficiência.</p>
+                </text>
+            </section> 
+        </body>
+
+        <bibliography>
+            <bibitem>
+                <description>Acedido a 25 de Novembro de 2020. Disponível em:https://www.gta.ufrj.br/grad/00_1/miguel/link1.html</description>
+                <author>XML - Extensible Markup Language</author>
+            </bibitem>
+        </bibliography>
+
+    </report>
+
+    <report>
+
+        <theme>TP1 – Internet Introduction and Satellite Communications</theme>
+        <date>2020-10-27</date>
+        <affiliation>Universidade do Minho</affiliation>
+        <subject>Comunicações e Redes</subject>
+
+        <team>
+            <element>
+                <name>Carla Rodrigues</name>
+                <number>84710</number>
+            </element>
+            <element>
+                <name>Cláudia Palma</name>
+                <number>85401</number>
+            </element>
+            <element>
+                <name>Eduarda Ribeiro</name>
+                <number>85412</number>
+            </element>
+        </team>
+
+        <body>
+
+            <section>
+                <title>Introdução</title>
+                <text><p>Os satélites de comunicação permitem que transmissões de rádio, televisão e telefone sejam enviadas no momento para qualquer lugar do mundo. Antes dos satélites, as transmissões eram difíceis ou mesmo impossíveis em longas distâncias. Os sinais, que viajam em linha reta, não podiam seguir a curvatura da Terra para atingir uma localização distante. Como os satélites estão em órbita, os sinais podem ser enviados instantaneamente para o espaço e então redirecionados para outro satélite ou diretamente para o seu destino.</p><p>O satélite pode ter um papel passivo nas comunicações, como enviar sinais da Terra de volta para outro local da Terra; por outro lado, alguns satélites carregam dispositivos eletrónicos chamados transponders para receber, amplificar e retransmitir sinais para a Terra.</p><p>A comunicação por satélite tem dois componentes principais: o segmento terrestre e o segmento espacial, que é principalmente o próprio satélite. A comunicação por satélite envolve (Figura 1), em primeiro lugar, a transmissão de um sinal de uma estação terrestre para um satélite (up link). O satélite recebe e amplifica esse sinal e retransmite-o de volta para a Terra (down link), onde é recebido e reamplificado por estações e terminais terrestres, na área de cobertura do satélite. Os receptores de satélite no solo, incluem equipamento de satélite direto para casa (DTH), equipamento de recepção móvel em aeronaves, telefones por satélite e dispositivos portáteis.</p>
+                </text>
+                <hashtag>#Satellite Communications</hashtag>
+            </section>
+
+            <section>
+                <title>Utilização dos Satélites para Comunicações</title>
+                <text><p>Um satélite deve seguir uma trajetória, que é a órbita elíptica do satélite com uma extensão máxima chamada apogeu e uma extensão mínima chamada perigeu.Existem vários tipos de órbitas:</p><p>Low Earth Orbit (LEO):</p><p>Trata-se de uma órbita que está relativamente perto da superfície da Terra. Normalmente está a uma altitude inferior a 1000 km, mas pode estar tão baixo quanto 160 km acima da Terra. Ao contrário dos satélites em GEO que, devem manter a sua órbita ao longo do equador da Terra, o plano dos satélites em LEO pode ser inclinado. Isto significa, que há mais rotas disponíveis para satélites em LEO, uma das razões pelas quais é uma órbita muito usada [1].</p><p>Geostationary Orbit (GEO):</p><p>Os satélites em órbita geoestacionária (GEO) circundam a Terra acima do equador de oeste para leste seguindo a rotação da Terra. Demoram 23 horas, 56 minutos e 4 segundos, viajando exatamente à mesma velocidade da Terra. Isto faz com que os satélites em GEO pareçam estar “estacionários”, isto é, numa posição fixa, e ao longo do dia traçam uma rota que assume tipicamente a forma de analema. Para corresponder perfeitamente à rotação da Terra, a velocidade dos satélites em GEO deve ser de 3 Km/segundo a uma altitude aproximada de 35786 Km [1].</p><p>A abordagem à comunicação por satélite será complementada com a apresentação de informação sobre os seguintes satélites: GORIZONT 29, ORBCOMM FM 15, NILESAT 101 e IRIDIUM 166:</p><p>O GORIZONT 29 é um satélite de comunicações geossíncrono russo, lançado a 18 de novembro de 1993. Tinha como propósito, prestar serviços de comunicação por telefone, telégrafo e fax, além da retransmissão de programas de TV e rádio. Serviu ainda, como suporte para comunicações marítimas e internacionais. Apesar de já não estar operacional, demonstrou uma vida útil de quase 10 anos, embora o esperado fosse entre 3 e 5 anos.</p><p>O ORBCOMM FM 15 Foi lançado a 2 de agosto de 1998 e faz parte de um empreendimento comercial para fornecer serviços de mensagens globais, através de uma constelação de 26 satélites em Low Earth Orbit (LEO).</p><p>O satélite NILESEAT 101, foi lançado a 28 de abril de 1998 pela Arianespace. É um satélite de comunicações geossíncrono de propriedade egípcia que foi desativado em fevereiro de 2013. Permitiu a obtenção de mais de 100 canais de TV digital, bem como serviços de rádio e multimédia para mais de cinco milhões de lares em todo o Norte da África, de Marrocos ao Golfo Pérsico.</p><p>O satélite IRDIUM 166 foi lançado a 25 de julho de 2018. O sistema de satélites IRIDIUM trata-se de uma constelação de 66 satélites, distribuídos em seis planos, cujo lançamento iniciou-se em 1995. É propriedade da empresa Iridium LLC, com sede nos EUA.</p>
+                </text>
+            </section>
+
+            <section>
+                <title>Conclusão</title>
+                <text><p>Geostationary orbit (GEO) - GORIZONT 29 e NILESAT 101:</p><p>Umas das vantagens dos satélites com este tipo de órbita é, terem a propriedade única de permanecerem fixos, exatamente na mesma posição no céu, quando vistos de qualquer local fixo na Terra, o que significa que as antenas terrestres não precisam de rastrear o movimento do satélite, poendo permanecer fixas numa direção.</p><p>Uma desvantagem dos satélites geoestacionários deve-se à sua elevada altitude: os sinais de rádio levam aproximadamente 0,25 segundos para chegar e retornar do satélite, resultando num pequeno, mas significativo, atraso de sinal. Esse atraso aumenta a dificuldade de conversação telefónica e reduz o desempenho dos network protocol como os TCP/ IP. Contudo, não apresenta problemas com sistemas não interativos, como a transmissão de televisão por satélite.</p><p>Um satélite em órbita geoestacionária assegura uma cobertura de ½ a 1/3 da Terra, não cobrindo os pólos. Contudo, não necessita de uma constelação de satélites para assegurar uma cobertura local permanente. Estes satélites são usados para previsões meteorológicas, comunicação fixas, broadcasting televisivo e outros tipos de comunicações globais. São menos úteis para comunicações por telefone e GPS pois, este este tipo de satélites consome muita energia [2].</p><p>Low Earth Orbit (LEO) - ORBCOMM FM 15 e IRIDIUM 166:</p><p>Uma das desvantagens dos satélites em LEO é que, possuem uma elevada velocidade e não estão fixos no espaço em relação à Terra, tornando difícil rastreá-los a partir de estações terrestres.</p><p>Deste modo, os satélites de comunicação em LEO, geralmente funcionam como parte de uma grande combinação ou constelação de vários satélites para assegurar uma cobertura total permanente, ou seja, são necessários mais do que 48 satélites distribuídos por 8 planos diferentes. Isto permite que eles cubram grandes áreas da Terra simultaneamente, trabalhando em conjunto. De referir que, a cobertura terrestre assegurada por cada um destes satélites é considerada global.</p><p>Os satélites em LEO são mais baratos de colocar em órbita do que os satélites geoestacionários e, a sua relativa proximidade com o solo, permite uma redução do atraso de propagação para 0,05 segundos e não exigem uma intensidade de sinal tão alta vito que, as perdas em espaço livre (distância terra-satélite) serão muito mais reduzidas. Há, portanto, uma compensação entre o número de satélites e o seu custo. Estes satélites são usados para comunicações móveis, telemóvel via satélite, radioamadorismo, observação da Terra e atmosfera e GPS [3].</p>
+                </text>
+            </section>
+
+        </body>
+
+        <image>https://www.tutorialspoint.com/satellite_communication/images/two_way_satellite_communication.jpg</image>
+
+        <bibliography>
+            <bibitem>
+                <description>Redes de computadores e a Internet: uma abordagem top-down, 6. ed. São Paulo: Pearson Education do Brasil, 2013.</description>
+                <author>J. F. Kurose, K. W. Ross</author>
+            </bibitem>
+            
+            <bibitem>
+                <description>“Satellite communication channel”, Degree Thesis, Linnaeus University, School of Computer Science, Physics and Mathematics, 2012.</description>
+                <author>A. Jasim, F. Sabah, M. R. Mohammed</author>
+            </bibitem>
+
+            <bibitem>
+                <description>Sistemas de Comunicação por Satélite. Sistemas de Telecomunicações II. Disponível em: https://web.fe.up.pt/~mleitao/SRCO/Teoricas/SRCO_SAT.pdf</description>
+                <author>M. J. M. Leitão. J.</author>
+            </bibitem>
+        </bibliography>
+
+    </report>
+
+    <report>
+
+        <theme>TP2 – Internet paths and delays</theme>
+        <date>2020-11-03</date>
+        <affiliation>Universidade do Minho</affiliation>
+        <subject>Comunicações e Redes</subject>
+
+        <team>
+            <element>
+                <name>Carla Rodrigues</name>
+                <number>84710</number>
+            </element>
+            <element>
+                <name>Cláudia Palma</name>
+                <number>85401</number>
+            </element>
+            <element>
+                <name>Eduarda Ribeiro</name>
+                <number>85412</number>
+            </element>
+        </team>
+
+        <body>
+
+            <section>
+                <title>Introdução</title>
+                <text><p>Este trabalho tem como finalidade recorrer a servidores externos de modo a ser possível encontrar os routers associados aos seguintes IPs: 193.136.9.240 e 143.54.2.20. Como resultado, vão ser apresentadas quatro alternativas para cada endereço IP.
+                Um traceroute é uma ferramenta que permite compreender como a informação é transmitida de um computador para outro através de uma rede. Este programa pode ser executado em qualquer hospedeiro da Internet e determina o “caminho” realizado entre dois sistemas, especificando os routers pelos quais a ligação passa até alcançar o destinatário.</p><p>Assim, é necessário indicar o destino para que o router de origem envie uma série de pacotes de Protocolo de Mensagens de Controlo de Internet (ICMP). Quando o router final receber o último dos pacotes enviados pela origem, este envia uma mensagem à origem e é registado o round-trip time (RTT), isto é, o tempo total que decorreu desde o envio do pacote até à receção da mensagem de retorno correspondente. De salientar que o traceroute repete este processo três vezes, de modo que a origem envia, na verdade, 3N pacotes ao destino, considerando que existem N-1 routers entre a origem e o destino. Ficam também registados o nome e o endereço IP de cada router.</p><p>Cada pacote de informação possui um valor de time-to-live (TTL). Este valor é incluído para garantir que os pacotes não fiquem a circular infinitamente na rede e é decrementado em uma unidade cada vez que o pacote é processado por um router. Assim, se o valor de TTL atingir o zero e o destino ainda não estiver alcançado, o pacote é descartado, notificando o utilizador que o destino não foi atingido [1].
+                O método de funcionamento de um traceroute é baseado no aumento do valor de TTL para cada pacote enviado sucessivamente. O primeiro pacote é enviado com um valor de TTL igual a 1, o que implica apenas um salto. O pacote seguinte será, então, enviado com um valor de TTL igual a 2 e assim sucessivamente. Desta forma, é possível traçar o percurso de um pacote com vista a um determinado destino.</p><p>O RTT pode ser influenciado por múltiplos fatores, tais como: a natureza do meio de transmissão, o tráfego da rede local (LAN), o tempo de resposta do servidor, a contagem de nó, o congestionamento e a distância física.</p>
+                <hashtag>#Round Trip Time (RTT)</hashtag>
+                </text>
+            </section>
+
+            <section>
+                <title>GTT – IP Network Diagnosis: IP 193.136.9.240</title>
+                <text><p>Existem 11 routers entre a origem e o destino (IP 193.136.9.240 e host marco.uminho.pt). Foram detetados alguns saltos relevantes dos 12 apresentados na tabela 3, sendo estes explicados detalhadamente de seguida. Entre os saltos 1 e 4, verificam-se valores de RTT bastante próximos (aproximadamente constantes), o que era de esperar uma vez que a transmissão de pacotes é feita dentro do mesmo continente, ainda que entre dois países diferentes, de 3 para 4, pois estes estão relativamente próximos.</p><p>Do salto 4 para o 5, o valor de RTT apresentou uma subida considerável (subida de 52.949 ms). Esta subida deve-se, provavelmente, à mudança de continente: o router 4 está em França e o router 5 nos Estados Unidos. O aumento da distância geográfica, foi o fator que consideramos ter tido um maior peso no aumento do RTT. Contudo, um elevado aumento no valor de RTT (aumento da latência) pode indicar um problema. Pode ser um link de rede saturado (super utilizado), um link de rede lento, um router sobrecarregado, ou, qualquer outro problema naquele salto.</p><p>Do salto 5 para o 6, verifica-se uma diminuição do valor de RTT para mais de metade, apesar de ter havido, novamente, uma mudança de continente: o router 5 está no Estados Unidos e o router 6 está em França. Isto pode levar a concluir que do salto 4 para o 5, o aumento de RTT possa ser justificado não só pela questão da distância, mas também, por um congestionamento da rede. No salto 8, observa-se que apenas tem o endereço de IP do router, mas falta o nome do mesmo. Isto significa, que a pesquisa de DNS (Domain Name Server) inversa (encontrar o nome do host com base no endereço IP) falhou nesse endereço e assim, não foi possível determinar o nome do router.</p><p>Entre os saltos 9 e 11, observam-se apenas timeouts. Existem duas possibilidades para isto acontecer. Primeiro, o ICMP/ UDP pode não estar configurado. Portanto, se o traceroute for concluído com êxito e ainda assim existirem timeouts, é provável que esses routers não estejam configurados para responder ao tráfego ICMP/ UDP (Internet Control Message Protocol/ User Datagram Protocol). Este resultado não significa que o pacote não passou, mas que pode não ter sido enviado mensagem de retorno pelo router. A segunda possibilidade é ter ocorrido a perda dos pacotes, isto é, terem sido descartados devido a um problema na rede. Geralmente deve-se aos tempos limite de pacote, ou seja, o tempo de envio do pacote ter sido superior ao tempo de envio limite (TTL), ou então, porque o tráfego foi bloqueado por um firewall.</p><p>Por fim, a ferramenta atingiu o máximo de saltos predefinidos antes de atingir o destinatário esperado, IP 193.136.9.240 e host marco.uminho.pt.</p>
+                </text>
+            </section>
+
+            <section>
+                <title>GTT – IP Network Diagnosis: IP 143.54.2.20</title>
+                <text><p>Entre os saltos 1 e 3, verificam-se valores de RTT bastante próximos (aproximadamente constantes), o que era de esperar uma vez que a transmissão de pacotes é feita dentro do mesmo continente, ainda que entre dois países diferente, de 1 para 2 (da Alemanha para o Reino Unido), onde se observa um ligeiro aumento do valor de RTT devido à distância geográfica entre eles. Do salto 3 para o 4, verifica-se um ligeiro aumento do valor de RTT. Era de esperar que este aumento fosse substancialmente mais elevado uma vez que a transmissão dos pacotes sofre uma mudança de continente, entrando aqui o fator da distância. Este baixo valor de latência indica uma boa conexão.</p><p>No salto 5, observam-se apenas timeouts, cuja razão será a mesma que foi apresentada anteriormente para o caso do IP 193.136.9.240. Entre os saltos 6 e 9, verificam-se valores de RTT bastante próximos (aproximadamente constantes), o que era de esperar uma vez que a transmissão de pacotes é feita dentro do mesmo país.</p><p>Do salto 9 para o 10, o valor de RTT apresentou uma subida considerável (subida de 97.250 ms). Esta subida deve-se, provavelmente, à mudança de continente: o router 9 está em nos Estados Unidos (América do Norte) e o router 10 no Brasil (América do Sul). O aumento da distância geográfica, foi o fator que consideramos ter tido um maior peso no aumento do RTT. Contudo, um elevado aumento no valor de RTT (aumento da latência) pode indicar um problema. Pode ser um link de rede saturado (super utilizado), um link de rede lento, um router sobrecarregado, ou, qualquer outro problema naquele salto.</p><p>Nos saltos 10, 11 e 12 observa-se que apenas têm o endereço de IP do router, mas falta o nome do mesmo. Isto significa, que a pesquisa de DNS inversa (encontrar o nome do host com base no endereço IP) falhou nesses endereços e assim, não foi possível determinar os nomes dos routers. Além disso, verificam-se valores de RTT bastante próximos (aproximadamente constantes), o que era de esperar uma vez que a transmissão de pacotes é feita dentro da mesma cidade.</p><p>Também aqui, a ferramenta atingiu o máximo de saltos predefinidos antes de atingir o destinatário esperado, IP 143.54.2.20 e host www.ufrgs.br.</p>
+                </text>
+            </section>
+
+            <section>
+                <title>Conclusão</title>
+                <text><p>Ao longo deste trabalho foram utilizados vários servidores externos para obter as rotas para os IPs 193.136.9.240 e 143.54.2.20. Contatou-se que, para o mesmo IP, servidores externos diferentes obtiveram um número total de saltos e um tempo total de resposta distintos.
+                Verificou-se também, que o RTT aumenta à medida que se aproxima do IP e que, depende da distância que o router tem de percorrer e do tempo que tem de permanecer em fila de espera.</p><p>Através do servidor Looking-glass.connect, não se obteve resposta para nenhum dos IPs. Isto aconteceu por uma de duas razões: ou o router está num caminho configurado para não dar resposta, ou o utilizador está a utilizar um endereço de intranet para fazer acesso ao exterior e o exterior não conhece a rota para aceder. Por exemplo, como podemos observar na figura 3, a ligação a marco.uminho.pt acontece até ao router da Universidade do Minho, mas o utilizador não consegue aceder ao router interno uma vez que não tem permissão para isso.Através da comparação dos resultados representados pelas figuras 3 e 6, conclui-se que não são equivalentes e consistentes [2].</p>
+                </text>
+            </section>
+
+        </body>
+
+        <image>https://www.cloudflare.com/img/learning/cdn/glossary/ttl/icmp-traceroute-diagram.png</image>
+
+        <bibliography>
+            <bibitem>
+                <description>Redes de computadores e a Internet: uma abordagem top-down, 6. ed. São Paulo: Pearson Education do Brasil, 2013.</description>
+                <author>J. F. Kurose, K. W. Ross</author>
+            </bibitem>
+            
+            <bibitem>
+                <description>“Satellite communication channel”, Degree Thesis, Linnaeus University, School of Computer Science, Physics and Mathematics, 2012.</description>
+                <author>A. Jasim, F. Sabah, M. R. Mohammed</author>
+            </bibitem>
+        </bibliography>
+
+    </report>
+
+    <report>
+
+        <theme>TP3 – Encapsulation analysis</theme>
+        <date>2020-11-17</date>
+        <affiliation>Universidade do Minho</affiliation>
+        <subject>Comunicações e Redes</subject>
+
+        <team>
+            <element>
+                <name>Carla Rodrigues</name>
+                <number>84710</number>
+            </element>
+            <element>
+                <name>Cláudia Palma</name>
+                <number>85401</number>
+            </element>
+            <element>
+                <name>Eduarda Ribeiro</name>
+                <number>85412</number>
+            </element>
+        </team>
+
+      
+        <body>
+
+            <section>     
+                <title>Introdução</title>
+                <text><p>O encapsulamento de dados é o processo que adiciona informações de cabeçalho aos dados antes da sua transmissão. Na maioria das formas de comunicação de dados, os dados originais são encapsulados ou envolvidos em vários protocolos antes de serem transmitidos.
+                Tendo como exemplo o envio / recepção de uma Mensagem Aplicacional (HTTP), o protocolo da camada de aplicação, HTTP, inicia o processo ao entregar os dados formatados em HTML à camada de transporte. Lá, os dados de aplicação são divididos em segmentos de TCP. Cada um desses segmentos recebe um cabeçalho, que contém informações sobre qual o processo, dos que estão a ser executados no computador destino, deve receber a mensagem.</p><p>A camada de transporte faz, então, o encapsulamento dos dados HTML dentro do segmento e envia-os à camada de Rede, onde o protocolo IP é implementado. Aqui, todo o segmento TCP é encapsulado dentro de um pacote IP, que agrega, também, o cabeçalho IP. O cabeçalho IP contém os endereços IP dos hosts de origem e destino, bem como as informações necessárias para entregar o pacote ao seu processo de destino correspondente. A última camada deste processo é a Frame Ethernet, em que é adicionado um cabeçalho Ethernet.</p><p>No presente trabalho, analisaram-se os frames 36, 37 e 76, sendo os primeiros dois do protocolo HTTP, e o último do protocolo TCP [1].</p>
+                </text>
+            </section>
+
+            <section>
+                <title>Análise dos frames 36, 37 e 76</title>
+                <text><p>a) Quais os tamanhos dos dados transportados?</p><p>Frame 36: 539 bytes.</p><p>Frame 37: 448 bytes.</p><p>Frame 76: 149 bytes.</p><p>b) Quais os valores de overhead introduzidos pela camadas de transporte:</p><p>Frame 36: 32 bytes.</p><p>Frame 37: 32 bytes.</p><p>Frame 76: 32 bytes.</p><p>c) Quais os valores de overhead introduzidos pela camadas de rede:</p><p>Frame 36: 20 bytes.</p><p>Frame 37: 20 bytes.</p><p>Frame 76: 20 bytes.</p><p>d) Quais os endereços IP utilizados como Origem (Source) e Destino (Destination)?</p><p>Frame 36: Origem (Source): 193.137.89.181; Destino (Destination): 199.34.229.100</p><p>Frame 37: Origem (Source): 193.137.89.181; Destino (Destination): 199.34.229.100</p><p>Frame 76: Origem (Source): 193.137.89.181; Destino (Destination): 199.34.229.100</p>
+                </text>
+                <hashtag>#HTTP (Hypertext Transfer Protocol)</hashtag>
+            </section>
+
+        
+            <section>
+                <title>Conclusão</title>
+                <text><p>Uma vez que o nº de bytes de overhead é o mesmo para os três frames, é de esperar que em sistemas mais pequenos, o rendimento seja inferior. Os resultados obtidos na alínea d. foram os esperados, uma vez que os rendimentos foram 91.2%, 89.6% e 74,1% para os frames 36, 37 e 76, respetivamente, sendo que estes estão ordenados de forma decrescente de nº de bytes úteis de dados. O encapsulamento de dados é o processo que adiciona informações de cabeçalho de protocolo aos dados antes da transmissão. Na maioria das formas de comunicação de dados, os dados originais são encapsulados ou envolvidos em vários protocolos antes de serem transmitidos.</p><p>No caso mais simples, cada camada recebe o pacote de dados fornecido pela camada acima da sua e anexa informações adicionais, também chamadas de informações de cabeçalho, o que implica a introdução de um overhead adicional aos dados (Payload) disponibilizados na camada acima. Assim, em cada camada, um pacote possui dois tipos de campos: campos de cabeçalho e um campo de carga útil, sendo esta última geralmente um pacote da camada acima [2].</p><p>As técnicas de encapsulamento revelam algumas vantagens, nomeadamente: controlo de erros mais eficiente; acessos mais equilibrados à rede; buffers mais pequenos nos nós da rede; possibilita a comunicação entre tipos diferentes de hardware e de software de rede; padroniza os componentes de rede, permitindo o desenvolvimento e o suporte por parte de vários fabricantes; evita que as modificações numa camada afetem as outras, possibilitando maior rapidez no seu desenvolvimento.</p><p>No entanto, apresenta algumas desvantagens: overheads adicionais (maior número de PDUs e mais informação de controlo por PDU); mais interrupções nos processadores (tipicamente uma por segmento); tempos de processamento superiores (funções adicionais a realizar.</p>
+                </text>
+            </section>
+
+        </body>
+
+        <image>https://estacio.webaula.com.br/cursos/go0364/galeria/aula1/img/img10.jpg</image>
+
+        <bibliography>
+            <bibitem>
+                <description>Acedido a 20 de Outubro de 2020. Disponível em: http://deptal.estgp.pt:9090/cisco/ccna1/course/module3/3.3.1.3/3.3.1.3.html</description>
+                <author>Encapsulamento de Dados: Operação do Protocolo de Envio de Mensagem.</author>
+            </bibitem>
+
+            <bibitem>
+                <description>Redes de computadores e a Internet: uma abordagem top-down, 6. ed. São Paulo: Pearson Education do Brasil, 2013.</description>
+                <author>J. F. Kurose, K. W. Ross</author>
+            </bibitem>
+        </bibliography>
+     
+    </report>
+
+</portfolio>

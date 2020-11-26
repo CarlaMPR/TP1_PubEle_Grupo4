@@ -1,0 +1,108 @@
+
+<html>
+   <head>
+    	<meta charset=UTF-8"/>
+    	<title>TP3 – Encapsulation analysis</title>
+    	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.5.3/yeti/bootstrap.min.css">
+    	<style>
+			body{
+            	text-align:justify;
+            	margin-right:100px;
+            	margin-left:100px;
+        	}     
+        </style>
+    </head>
+
+    <body style="font-family:Times New Roman">
+    	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.5.3/yeti/bootstrap.min.css">
+        <style>
+            body{
+                text-align:justify;
+                margin-right:100px;
+                margin-left:100px;
+            }    
+        </style>
+
+    	<br>
+    	
+        <h1 align="center"><b>TP3 – Encapsulation analysis</b></h1>
+        <hr align="center" width="70%">
+        <h3 align="center">Universidade do Minho</h3>
+        <br>
+        <center><img src="https://facs2017.di.uminho.pt/sites/default/files/logo_UMEENG_sem_nome.jpg" with=110 height=80></center>
+        <br>
+        <h3 align="center">Comunicações e Redes</h3>
+        <br>
+        <h4 align="center">2020-11-17</h4>
+        <hr/>
+
+        <style>
+			div.a {
+  			text-indent: 25px;
+			}	
+      	</style>
+
+      	<style>
+    		.heading { color: #E24700; }
+  		</style>
+
+        <ul><h4><b>Autores</b></h4><ul>
+            
+            <li>Carla Rodrigues : 84710</li>
+            
+            <li>Cláudia Palma : 85401</li>
+            
+            <li>Eduarda Ribeiro : 85412</li>
+            
+        </ul></ul>
+        <hr/>
+        <br>
+
+        <ol><h2>Índice</h2><ol>
+        	
+	        <li><a class="heading" href="#Introdução">Introdução</a></li>
+	        
+	        <li><a class="heading" href="#Análise dos frames 36, 37 e 76">Análise dos frames 36, 37 e 76</a></li>
+	        
+	        <li><a class="heading" href="#Conclusão">Conclusão</a></li>
+	        
+	    </ol></ol>
+
+		<ol>
+	       	
+	        <h2 id="Introdução"> Introdução</h2>
+		    <div class="a"><p><p>O encapsulamento de dados é o processo que adiciona informações de cabeçalho aos dados antes da sua transmissão. Na maioria das formas de comunicação de dados, os dados originais são encapsulados ou envolvidos em vários protocolos antes de serem transmitidos.
+                Tendo como exemplo o envio / recepção de uma Mensagem Aplicacional (HTTP), o protocolo da camada de aplicação, HTTP, inicia o processo ao entregar os dados formatados em HTML à camada de transporte. Lá, os dados de aplicação são divididos em segmentos de TCP. Cada um desses segmentos recebe um cabeçalho, que contém informações sobre qual o processo, dos que estão a ser executados no computador destino, deve receber a mensagem.</p><p>A camada de transporte faz, então, o encapsulamento dos dados HTML dentro do segmento e envia-os à camada de Rede, onde o protocolo IP é implementado. Aqui, todo o segmento TCP é encapsulado dentro de um pacote IP, que agrega, também, o cabeçalho IP. O cabeçalho IP contém os endereços IP dos hosts de origem e destino, bem como as informações necessárias para entregar o pacote ao seu processo de destino correspondente. A última camada deste processo é a Frame Ethernet, em que é adicionado um cabeçalho Ethernet.</p><p>No presente trabalho, analisaram-se os frames 36, 37 e 76, sendo os primeiros dois do protocolo HTTP, e o último do protocolo TCP [1].</p>
+</p></div>
+	       	
+	        <h2 id="Análise dos frames 36, 37 e 76"> Análise dos frames 36, 37 e 76</h2>
+		    <div class="a"><p><p>a) Quais os tamanhos dos dados transportados?</p><p>Frame 36: 539 bytes.</p><p>Frame 37: 448 bytes.</p><p>Frame 76: 149 bytes.</p><p>b) Quais os valores de overhead introduzidos pela camadas de transporte:</p><p>Frame 36: 32 bytes.</p><p>Frame 37: 32 bytes.</p><p>Frame 76: 32 bytes.</p><p>c) Quais os valores de overhead introduzidos pela camadas de rede:</p><p>Frame 36: 20 bytes.</p><p>Frame 37: 20 bytes.</p><p>Frame 76: 20 bytes.</p><p>d) Quais os endereços IP utilizados como Origem (Source) e Destino (Destination)?</p><p>Frame 36: Origem (Source): 193.137.89.181; Destino (Destination): 199.34.229.100</p><p>Frame 37: Origem (Source): 193.137.89.181; Destino (Destination): 199.34.229.100</p><p>Frame 76: Origem (Source): 193.137.89.181; Destino (Destination): 199.34.229.100</p>
+</p></div>
+	       	
+	        <h2 id="Conclusão"> Conclusão</h2>
+		    <div class="a"><p><p>Uma vez que o nº de bytes de overhead é o mesmo para os três frames, é de esperar que em sistemas mais pequenos, o rendimento seja inferior. Os resultados obtidos na alínea d. foram os esperados, uma vez que os rendimentos foram 91.2%, 89.6% e 74,1% para os frames 36, 37 e 76, respetivamente, sendo que estes estão ordenados de forma decrescente de nº de bytes úteis de dados. O encapsulamento de dados é o processo que adiciona informações de cabeçalho de protocolo aos dados antes da transmissão. Na maioria das formas de comunicação de dados, os dados originais são encapsulados ou envolvidos em vários protocolos antes de serem transmitidos.</p><p>No caso mais simples, cada camada recebe o pacote de dados fornecido pela camada acima da sua e anexa informações adicionais, também chamadas de informações de cabeçalho, o que implica a introdução de um overhead adicional aos dados (Payload) disponibilizados na camada acima. Assim, em cada camada, um pacote possui dois tipos de campos: campos de cabeçalho e um campo de carga útil, sendo esta última geralmente um pacote da camada acima [2].</p><p>As técnicas de encapsulamento revelam algumas vantagens, nomeadamente: controlo de erros mais eficiente; acessos mais equilibrados à rede; buffers mais pequenos nos nós da rede; possibilita a comunicação entre tipos diferentes de hardware e de software de rede; padroniza os componentes de rede, permitindo o desenvolvimento e o suporte por parte de vários fabricantes; evita que as modificações numa camada afetem as outras, possibilitando maior rapidez no seu desenvolvimento.</p><p>No entanto, apresenta algumas desvantagens: overheads adicionais (maior número de PDUs e mais informação de controlo por PDU); mais interrupções nos processadores (tipicamente uma por segmento); tempos de processamento superiores (funções adicionais a realizar.</p>
+</p></div>
+	       	
+	    </ol>
+
+	    <br>
+
+	    
+	    <center><img src=https://estacio.webaula.com.br/cursos/go0364/galeria/aula1/img/img10.jpg with=550 height=500></center>
+	    
+
+	    <br>
+	    <br>
+
+		<ol><h2>Referências Bibliográficas</h2><ol>
+		   	<p>
+			<li> Encapsulamento de Dados: Operação do Protocolo de Envio de Mensagem. . Acedido a 20 de Outubro de 2020. Disponível em: http://deptal.estgp.pt:9090/cisco/ccna1/course/module3/3.3.1.3/3.3.1.3.html 
+		    </li></p>
+		    
+			<li> J. F. Kurose, K. W. Ross . Redes de computadores e a Internet: uma abordagem top-down, 6. ed. São Paulo: Pearson Education do Brasil, 2013. 
+		    </li></p>
+		    
+		</ol></ol>
+		
+    </body>
+</html>

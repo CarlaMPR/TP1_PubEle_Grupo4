@@ -1,0 +1,14 @@
+<!--DTD report... -->
+<!ELEMENT portfolio (report|theme|date|affiliation|team|body|bibliography|subject)* >
+<!ELEMENT report (theme|date|affiliation|subject|team|body|image|bibliography)* >
+<!ELEMENT theme (#PCDATA) >
+<!ELEMENT date (#PCDATA) >
+<!ELEMENT affiliation (#PCDATA) >
+<!ELEMENT subject (#PCDATA) >
+<!ELEMENT team (element)* >
+<!ELEMENT element (name,number)* >
+<!ELEMENT body (section)* >
+<!ELEMENT image* >
+<!ELEMENT section(title|text|hashtag)* >
+<!ELEMENT bibliography(bibitem)* >
+<!ELEMENT bibitem(author,description)* >
